@@ -3,7 +3,7 @@
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>1146,1521</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1444,1521</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="54">
@@ -49,6 +49,7 @@
       <x:String>System.Management.Automation</x:String>
       <x:String>System.Dynamic</x:String>
       <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -90,6 +91,7 @@
       <AssemblyReference>System.Management.Automation</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
@@ -381,41 +383,44 @@
                 <av:PointCollection x:Key="ConnectorLocation">500,183 500,214.5</av:PointCollection>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="This for each is updating the client matrix according to the process number in the path.&#xA;&#xA;If the process number is equal to the process number in the path we check &quot;כן&quot; in the corresponding client matrix" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="200,183" sap2010:WorkflowViewState.IdRef="ForEach`1_19">
+            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="This for each is updating the client matrix according to the process number in the path.&#xA;&#xA;If the process number is equal to the process number in the path we check &quot;כן&quot; in the corresponding client matrix" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1133,3900" sap2010:WorkflowViewState.IdRef="ForEach`1_19">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="x:String">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:String" Name="fileFullPath" />
                   </ActivityAction.Argument>
-                  <ui:ForEach x:TypeArguments="x:String" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="826,2811" sap2010:WorkflowViewState.IdRef="ForEach`1_27">
+                  <ui:ForEach x:TypeArguments="x:String" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1097,3709" sap2010:WorkflowViewState.IdRef="ForEach`1_27">
                     <ui:ForEach.Body>
                       <ActivityAction x:TypeArguments="x:String">
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="x:String" Name="client" />
                         </ActivityAction.Argument>
-                        <If sap:VirtualizedContainerService.HintSize="790,2677" sap2010:WorkflowViewState.IdRef="If_17">
+                        <If sap:VirtualizedContainerService.HintSize="1061,3575" sap2010:WorkflowViewState.IdRef="If_17">
                           <If.Condition>
                             <InArgument x:TypeArguments="x:Boolean">
                               <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_105">fileFullPath.Contains(client)</mca:CSharpValue>
                             </InArgument>
                           </If.Condition>
                           <If.Then>
-                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="754,2500" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1025,3398" sap2010:WorkflowViewState.IdRef="Sequence_33">
                               <Sequence.Variables>
                                 <Variable x:TypeArguments="x:String" Name="processNum" />
                                 <Variable x:TypeArguments="x:String" Name="file" />
                                 <Variable x:TypeArguments="x:String" Name="action" />
                                 <Variable x:TypeArguments="sd:DataTable" Name="clientDt" />
                                 <Variable x:TypeArguments="x:String" Name="loggerPath" />
+                                <Variable x:TypeArguments="x:String" Name="startTime" />
+                                <Variable x:TypeArguments="sd:DataTable" Name="innerClientMidgamFilesDt" />
+                                <Variable x:TypeArguments="x:String" Name="clientCompanyName" />
                               </Sequence.Variables>
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="712,284" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
+                              <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="983,346" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
                                 <ui:MultipleAssign.AssignOperations>
-                                  <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+                                  <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
                                     <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_19">
                                       <ui:AssignOperation.To>
                                         <OutArgument x:TypeArguments="x:String">
@@ -467,7 +472,7 @@
                                     <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_97">
                                       <ui:AssignOperation.To>
                                         <OutArgument x:TypeArguments="x:String">
-                                          <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_239">startTime</mca:CSharpReference>
+                                          <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_250">startTime</mca:CSharpReference>
                                         </OutArgument>
                                       </ui:AssignOperation.To>
                                       <ui:AssignOperation.Value>
@@ -500,29 +505,34 @@
                                         </InArgument>
                                       </ui:AssignOperation.Value>
                                     </ui:AssignOperation>
+                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_110">
+                                      <ui:AssignOperation.To>
+                                        <OutArgument x:TypeArguments="sd:DataTable">
+                                          <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_269">innerClientMidgamFilesDt</mca:CSharpReference>
+                                        </OutArgument>
+                                      </ui:AssignOperation.To>
+                                      <ui:AssignOperation.Value>
+                                        <InArgument x:TypeArguments="sd:DataTable">
+                                          <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_572">new DataTable();</mca:CSharpValue>
+                                        </InArgument>
+                                      </ui:AssignOperation.Value>
+                                    </ui:AssignOperation>
+                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_111">
+                                      <ui:AssignOperation.To>
+                                        <OutArgument x:TypeArguments="x:String">
+                                          <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_270">clientCompanyName</mca:CSharpReference>
+                                        </OutArgument>
+                                      </ui:AssignOperation.To>
+                                      <ui:AssignOperation.Value>
+                                        <InArgument x:TypeArguments="x:String">
+                                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_587">client.Remove(0,client.LastIndexOf("\\")+1)</mca:CSharpValue>
+                                        </InArgument>
+                                      </ui:AssignOperation.Value>
+                                    </ui:AssignOperation>
                                   </scg:List>
                                 </ui:MultipleAssign.AssignOperations>
                               </ui:MultipleAssign>
-                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AddIntoLogger workflow" sap:VirtualizedContainerService.HintSize="712,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Logs\\AddIntoLogger.xaml">
-                                <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_TimeStart">
-                                    <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_527">startTime</mca:CSharpValue>
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_TimeEnd">
-                                    <Literal x:TypeArguments="x:String" Value="" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_Notes">
-                                    <Literal x:TypeArguments="x:String" Value="" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_Action">
-                                    <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_526">action</mca:CSharpValue>
-                                  </InArgument>
-                                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="InOut_LoggerDt">
-                                    <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_244">clientDt</mca:CSharpReference>
-                                  </InOutArgument>
-                                </ui:InvokeWorkflowFile.Arguments>
-                              </ui:InvokeWorkflowFile>
-                              <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This code is to get the process number our from the file path" Code="for (int i=0; i&lt; file.Length; i++)&#xA;{&#xA;    if (Char.IsDigit(file[i]))&#xA;        processNum += file[i];&#xA;}&#xA;" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="712,206" sap2010:WorkflowViewState.IdRef="InvokeCode_3" Language="CSharp">
+                              <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This code is to get the process number our from the file path" Code="for (int i=0; i&lt; file.Length; i++)&#xA;{&#xA;    if (Char.IsDigit(file[i]))&#xA;        processNum += file[i];&#xA;}&#xA;" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="983,206" sap2010:WorkflowViewState.IdRef="InvokeCode_3" Language="CSharp">
                                 <ui:InvokeCode.Arguments>
                                   <InArgument x:TypeArguments="x:String" x:Key="file">
                                     <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_108">file</mca:CSharpValue>
@@ -537,15 +547,21 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                               </ui:InvokeCode>
-                              <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="712,1686" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+                              <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="983,2674" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
                                 <TryCatch.Try>
-                                  <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="674,1459" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" InstanceCachePeriod="3000" Visible="False">
+                                  <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="945,2447" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" InstanceCachePeriod="3000" Visible="False">
                                     <ui:ExcelApplicationScope.Body>
                                       <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                                         <ActivityAction.Argument>
                                           <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                                         </ActivityAction.Argument>
-                                        <Sequence DisplayName="Excel scope" sap:VirtualizedContainerService.HintSize="640,1350" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                                        <Sequence DisplayName="Excel scope" sap:VirtualizedContainerService.HintSize="911,2338" sap2010:WorkflowViewState.IdRef="Sequence_32">
                                           <Sequence.Variables>
                                             <Variable x:TypeArguments="scg:IEnumerable(x:Object)" Name="col" />
                                             <Variable x:TypeArguments="x:Int32" Name="index" />
@@ -555,27 +571,46 @@
                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
-                                          <ui:ExcelReadColumn DisplayName="Read Column - Control Number" sap:VirtualizedContainerService.HintSize="598,59" sap2010:WorkflowViewState.IdRef="ExcelReadColumn_2" SheetName="מטריצת בקרות" StartingCell="F7">
+                                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AddIntoLogger workflow" sap:VirtualizedContainerService.HintSize="869,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Logs\\AddIntoLogger.xaml">
+                                            <ui:InvokeWorkflowFile.Arguments>
+                                              <InArgument x:TypeArguments="x:String" x:Key="in_TimeStart">
+                                                <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_527">startTime</mca:CSharpValue>
+                                              </InArgument>
+                                              <InArgument x:TypeArguments="x:String" x:Key="in_TimeEnd">
+                                                <Literal x:TypeArguments="x:String" Value="" />
+                                              </InArgument>
+                                              <InArgument x:TypeArguments="x:String" x:Key="in_Notes">
+                                                <Literal x:TypeArguments="x:String" Value="" />
+                                              </InArgument>
+                                              <InArgument x:TypeArguments="x:String" x:Key="in_Action">
+                                                <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_526">action</mca:CSharpValue>
+                                              </InArgument>
+                                              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="InOut_LoggerDt">
+                                                <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_244">clientDt</mca:CSharpReference>
+                                              </InOutArgument>
+                                            </ui:InvokeWorkflowFile.Arguments>
+                                          </ui:InvokeWorkflowFile>
+                                          <ui:ExcelReadColumn DisplayName="Read Column - Control Number" sap:VirtualizedContainerService.HintSize="869,59" sap2010:WorkflowViewState.IdRef="ExcelReadColumn_2" SheetName="מטריצת בקרות" StartingCell="F7">
                                             <ui:ExcelReadColumn.Result>
                                               <OutArgument x:TypeArguments="scg:IEnumerable(x:Object)">
                                                 <mca:CSharpReference x:TypeArguments="scg:IEnumerable(x:Object)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_35">col</mca:CSharpReference>
                                               </OutArgument>
                                             </ui:ExcelReadColumn.Result>
                                           </ui:ExcelReadColumn>
-                                          <ui:ForEach x:TypeArguments="x:Object" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="598,1007" sap2010:WorkflowViewState.IdRef="ForEach`1_26">
+                                          <ui:ForEach x:TypeArguments="x:Object" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="869,1050" sap2010:WorkflowViewState.IdRef="ForEach`1_26">
                                             <ui:ForEach.Body>
                                               <ActivityAction x:TypeArguments="x:Object">
                                                 <ActivityAction.Argument>
                                                   <DelegateInArgument x:TypeArguments="x:Object" Name="colVal" />
                                                 </ActivityAction.Argument>
-                                                <If sap:VirtualizedContainerService.HintSize="562,874" sap2010:WorkflowViewState.IdRef="If_16">
+                                                <If sap:VirtualizedContainerService.HintSize="833,917" sap2010:WorkflowViewState.IdRef="If_16">
                                                   <If.Condition>
                                                     <InArgument x:TypeArguments="x:Boolean">
                                                       <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_109">processNum == colVal.ToString()</mca:CSharpValue>
                                                     </InArgument>
                                                   </If.Condition>
                                                   <If.Then>
-                                                    <Sequence sap:VirtualizedContainerService.HintSize="526,698" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                                                    <Sequence sap:VirtualizedContainerService.HintSize="797,741" sap2010:WorkflowViewState.IdRef="Sequence_31">
                                                       <Sequence.Variables>
                                                         <Variable x:TypeArguments="x:String" Name="clientResponseFirstMail" />
                                                       </Sequence.Variables>
@@ -584,7 +619,7 @@
                                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                         </scg:Dictionary>
                                                       </sap:WorkflowViewStateService.ViewState>
-                                                      <ui:ExcelReadCell DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="484,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_6" SheetName="מטריצת בקרות">
+                                                      <ui:ExcelReadCell DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="755,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_6" SheetName="מטריצת בקרות">
                                                         <ui:ExcelReadCell.Cell>
                                                           <InArgument x:TypeArguments="x:String">
                                                             <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_110">"AI"+(7+index)</mca:CSharpValue>
@@ -596,14 +631,14 @@
                                                           </OutArgument>
                                                         </ui:ExcelReadCell.Result>
                                                       </ui:ExcelReadCell>
-                                                      <If sap:VirtualizedContainerService.HintSize="484,507" sap2010:WorkflowViewState.IdRef="If_15">
+                                                      <If sap:VirtualizedContainerService.HintSize="755,550" sap2010:WorkflowViewState.IdRef="If_15">
                                                         <If.Condition>
                                                           <InArgument x:TypeArguments="x:Boolean">
                                                             <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_111">string.IsNullOrEmpty(clientResponseFirstMail)</mca:CSharpValue>
                                                           </InArgument>
                                                         </If.Condition>
                                                         <If.Then>
-                                                          <Sequence sap:VirtualizedContainerService.HintSize="376,331" sap2010:WorkflowViewState.IdRef="Sequence_125">
+                                                          <Sequence sap:VirtualizedContainerService.HintSize="376,393" sap2010:WorkflowViewState.IdRef="Sequence_125">
                                                             <sap:WorkflowViewStateService.ViewState>
                                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -616,6 +651,18 @@
                                                                 </InArgument>
                                                               </ui:ExcelWriteCell.Cell>
                                                             </ui:ExcelWriteCell>
+                                                            <ui:AddDataRow DataRow="{x:Null}" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1">
+                                                              <ui:AddDataRow.ArrayRow>
+                                                                <InArgument x:TypeArguments="s:Object[]">
+                                                                  <mca:CSharpValue x:TypeArguments="s:Object[]" sap2010:WorkflowViewState.IdRef="CSharpValue`1_586">new object[] {fileFullPath}</mca:CSharpValue>
+                                                                </InArgument>
+                                                              </ui:AddDataRow.ArrayRow>
+                                                              <ui:AddDataRow.DataTable>
+                                                                <InOutArgument x:TypeArguments="sd:DataTable">
+                                                                  <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_273">innerClientMidgamFilesDt</mca:CSharpReference>
+                                                                </InOutArgument>
+                                                              </ui:AddDataRow.DataTable>
+                                                            </ui:AddDataRow>
                                                             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AddIntoLogger workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Logs\\AddIntoLogger.xaml">
                                                               <ui:InvokeWorkflowFile.Arguments>
                                                                 <InArgument x:TypeArguments="x:String" x:Key="in_TimeStart">
@@ -625,9 +672,11 @@
                                                                   <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_531">DateTime.Now.ToString()</mca:CSharpValue>
                                                                 </InArgument>
                                                                 <InArgument x:TypeArguments="x:String" x:Key="in_Notes">
-                                                                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_533">"Found :"+file</mca:CSharpValue>
+                                                                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_579">"Found :"+fileFullPath</mca:CSharpValue>
                                                                 </InArgument>
-                                                                <InArgument x:TypeArguments="x:String" x:Key="in_Action">Updating the matrix accordingly</InArgument>
+                                                                <InArgument x:TypeArguments="x:String" x:Key="in_Action">
+                                                                  <Literal x:TypeArguments="x:String">Updating the matrix accordingly</Literal>
+                                                                </InArgument>
                                                                 <InOutArgument x:TypeArguments="sd:DataTable" x:Key="InOut_LoggerDt">
                                                                   <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_245">clientDt</mca:CSharpReference>
                                                                 </InOutArgument>
@@ -635,6 +684,27 @@
                                                             </ui:InvokeWorkflowFile>
                                                           </Sequence>
                                                         </If.Then>
+                                                        <If.Else>
+                                                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AddIntoLogger workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Logs\\AddIntoLogger.xaml">
+                                                            <ui:InvokeWorkflowFile.Arguments>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="in_TimeStart">
+                                                                <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_571">startTime</mca:CSharpValue>
+                                                              </InArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="in_TimeEnd">
+                                                                <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_570">DateTime.Now.ToString()</mca:CSharpValue>
+                                                              </InArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="in_Notes">
+                                                                <Literal x:TypeArguments="x:String" Value="" />
+                                                              </InArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="in_Action">
+                                                                <Literal x:TypeArguments="x:String">Done searching - did not found a file</Literal>
+                                                              </InArgument>
+                                                              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="InOut_LoggerDt">
+                                                                <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_268">clientDt</mca:CSharpReference>
+                                                              </InOutArgument>
+                                                            </ui:InvokeWorkflowFile.Arguments>
+                                                          </ui:InvokeWorkflowFile>
+                                                        </If.Else>
                                                       </If>
                                                     </Sequence>
                                                   </If.Then>
@@ -658,7 +728,85 @@
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
                                           </ui:ForEach>
-                                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke WriteIntoLogger workflow" sap:VirtualizedContainerService.HintSize="598,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Logs\\WriteIntoLogger.xaml">
+                                          <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="869,753" sap2010:WorkflowViewState.IdRef="TryCatch_12">
+                                            <TryCatch.Try>
+                                              <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="560,526" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_14" InstanceCachePeriod="3000" Visible="False">
+                                                <ui:ExcelApplicationScope.Body>
+                                                  <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                                                    <ActivityAction.Argument>
+                                                      <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                                                    </ActivityAction.Argument>
+                                                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="526,417" sap2010:WorkflowViewState.IdRef="Sequence_128">
+                                                      <Sequence.Variables>
+                                                        <Variable x:TypeArguments="scg:List(x:String)" Name="existingWorksheets" />
+                                                      </Sequence.Variables>
+                                                      <sap:WorkflowViewStateService.ViewState>
+                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                        </scg:Dictionary>
+                                                      </sap:WorkflowViewStateService.ViewState>
+                                                      <ui:ExcelGetWorkbookSheets DisplayName="Get Workbook Sheets" sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="ExcelGetWorkbookSheets_2">
+                                                        <ui:ExcelGetWorkbookSheets.Sheets>
+                                                          <OutArgument x:TypeArguments="scg:List(x:String)">
+                                                            <mca:CSharpReference x:TypeArguments="scg:List(x:String)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_272">existingWorksheets</mca:CSharpReference>
+                                                          </OutArgument>
+                                                        </ui:ExcelGetWorkbookSheets.Sheets>
+                                                      </ui:ExcelGetWorkbookSheets>
+                                                      <If sap:VirtualizedContainerService.HintSize="484,263" sap2010:WorkflowViewState.IdRef="If_70">
+                                                        <If.Condition>
+                                                          <InArgument x:TypeArguments="x:Boolean">
+                                                            <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_580">!existingWorksheets.Contains( clientCompanyName )</mca:CSharpValue>
+                                                          </InArgument>
+                                                        </If.Condition>
+                                                        <If.Then>
+                                                          <ui:ExcelAppendRange DisplayName="Append Range" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelAppendRange_2">
+                                                            <ui:ExcelAppendRange.DataTable>
+                                                              <InArgument x:TypeArguments="sd:DataTable">
+                                                                <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_581">innerClientMidgamFilesDt</mca:CSharpValue>
+                                                              </InArgument>
+                                                            </ui:ExcelAppendRange.DataTable>
+                                                            <ui:ExcelAppendRange.SheetName>
+                                                              <InArgument x:TypeArguments="x:String">
+                                                                <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_582">clientCompanyName</mca:CSharpValue>
+                                                              </InArgument>
+                                                            </ui:ExcelAppendRange.SheetName>
+                                                          </ui:ExcelAppendRange>
+                                                        </If.Then>
+                                                      </If>
+                                                    </Sequence>
+                                                  </ActivityAction>
+                                                </ui:ExcelApplicationScope.Body>
+                                                <ui:ExcelApplicationScope.WorkbookPath>
+                                                  <InArgument x:TypeArguments="x:String">
+                                                    <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_583">in_Config["AttachmentsURI"].ToString()</mca:CSharpValue>
+                                                  </InArgument>
+                                                </ui:ExcelApplicationScope.WorkbookPath>
+                                              </ui:ExcelApplicationScope>
+                                            </TryCatch.Try>
+                                            <TryCatch.Catches>
+                                              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="564,21" sap2010:WorkflowViewState.IdRef="Catch`1_12">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <ActivityAction x:TypeArguments="s:Exception">
+                                                  <ActivityAction.Argument>
+                                                    <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                                  </ActivityAction.Argument>
+                                                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_26" Level="Info">
+                                                    <ui:LogMessage.Message>
+                                                      <InArgument x:TypeArguments="x:Object">
+                                                        <mca:CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_584">exception.Message.ToString()</mca:CSharpValue>
+                                                      </InArgument>
+                                                    </ui:LogMessage.Message>
+                                                  </ui:LogMessage>
+                                                </ActivityAction>
+                                              </Catch>
+                                            </TryCatch.Catches>
+                                          </TryCatch>
+                                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke WriteIntoLogger workflow" sap:VirtualizedContainerService.HintSize="869,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Logs\\WriteIntoLogger.xaml">
                                             <ui:InvokeWorkflowFile.Arguments>
                                               <InArgument x:TypeArguments="x:String" x:Key="in_LoggerFilePath">
                                                 <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_538">loggerPath</mca:CSharpValue>
@@ -685,7 +833,7 @@
                                   </ui:ExcelApplicationScope>
                                 </TryCatch.Try>
                                 <TryCatch.Catches>
-                                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="678,21" sap2010:WorkflowViewState.IdRef="Catch`1_5">
+                                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="949,21" sap2010:WorkflowViewState.IdRef="Catch`1_5">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -790,7 +938,7 @@
                             <av:PointCollection x:Key="ConnectorLocation">160,604 160,627</av:PointCollection>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This process is createing attachments DataTable (attachmentsDt)" DisplayName="Invoke CreateAttachmentsDataTable workflow" sap:VirtualizedContainerService.HintSize="200,108" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="CreateAttachmentsDataTable.xaml">
+                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This process is createing attachments DataTable (attachmentsDt)" DisplayName="Invoke CreateAttachmentsDataTable workflow" sap:VirtualizedContainerService.HintSize="200,108" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Others\\CreateAttachmentsDataTable.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
                             <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
                               <mca:CSharpValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_134">in_Config</mca:CSharpValue>
@@ -814,7 +962,7 @@
                                 <av:PointCollection x:Key="ConnectorLocation">260,696 290,696 290,529.04 439.5,529.04</av:PointCollection>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <Sequence sap2010:Annotation.AnnotationText="This sequence is assigned the files in the directories and check for &quot;כן&quot; in the client matrix" DisplayName="Files Assigner" sap:VirtualizedContainerService.HintSize="1553,6861" sap2010:WorkflowViewState.IdRef="Sequence_81">
+                            <Sequence sap2010:Annotation.AnnotationText="This sequence is assigned the files in the directories and check for &quot;כן&quot; in the client matrix" DisplayName="Files Assigner" sap:VirtualizedContainerService.HintSize="200,138" sap2010:WorkflowViewState.IdRef="Sequence_81">
                               <Sequence.Variables>
                                 <Variable x:TypeArguments="x:Int32" Name="rowIndex" />
                                 <Variable x:TypeArguments="scg:Dictionary(x:String, s:String[])" Name="filesDict" />
@@ -825,7 +973,7 @@
                                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:MultipleAssign sap2010:Annotation.AnnotationText="filesDict is a dictionary contains sender email as a key, the file name and the subject as an array as value of the dictionary." DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1511,155" sap2010:WorkflowViewState.IdRef="MultipleAssign_16">
+                              <ui:MultipleAssign sap2010:Annotation.AnnotationText="filesDict is a dictionary contains sender email as a key, the file name and the subject as an array as value of the dictionary." DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1168,155" sap2010:WorkflowViewState.IdRef="MultipleAssign_16">
                                 <ui:MultipleAssign.AssignOperations>
                                   <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                                     <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_42">
@@ -850,7 +998,7 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                               </ui:MultipleAssign>
-                              <ui:ForEachRow ColumnNames="{x:Null}" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="1511,627" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
+                              <ui:ForEachRow ColumnNames="{x:Null}" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="1168,627" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
                                 <ui:ForEachRow.Body>
                                   <ActivityAction x:TypeArguments="sd:DataRow">
                                     <ActivityAction.Argument>
@@ -923,19 +1071,19 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                               </ui:ForEachRow>
-                              <ui:RepeatNumberOfTimesX sap2010:Annotation.AnnotationText="This loop is checking where to move the file" DisplayName="Repeat Number of Times" sap:VirtualizedContainerService.HintSize="1511,4436" sap2010:WorkflowViewState.IdRef="RepeatNumberOfTimesX_6" StartAt="0">
+                              <ui:RepeatNumberOfTimesX sap2010:Annotation.AnnotationText="This loop is checking where to move the file" DisplayName="Repeat Number of Times" sap:VirtualizedContainerService.HintSize="1168,4851" sap2010:WorkflowViewState.IdRef="RepeatNumberOfTimesX_6" StartAt="0">
                                 <ui:RepeatNumberOfTimesX.Body>
                                   <ActivityAction x:TypeArguments="x:Int32">
                                     <ActivityAction.Argument>
                                       <DelegateInArgument x:TypeArguments="x:Int32" Name="I" />
                                     </ActivityAction.Argument>
-                                    <ui:RepeatNumberOfTimesX DisplayName="Repeat Number of Times" sap:VirtualizedContainerService.HintSize="1477,4250" sap2010:WorkflowViewState.IdRef="RepeatNumberOfTimesX_5" StartAt="0">
+                                    <ui:RepeatNumberOfTimesX DisplayName="Repeat Number of Times" sap:VirtualizedContainerService.HintSize="1134,4665" sap2010:WorkflowViewState.IdRef="RepeatNumberOfTimesX_5" StartAt="0">
                                       <ui:RepeatNumberOfTimesX.Body>
                                         <ActivityAction x:TypeArguments="x:Int32">
                                           <ActivityAction.Argument>
                                             <DelegateInArgument x:TypeArguments="x:Int32" Name="J" />
                                           </ActivityAction.Argument>
-                                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1443,4095" sap2010:WorkflowViewState.IdRef="Sequence_77">
+                                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1100,4510" sap2010:WorkflowViewState.IdRef="Sequence_77">
                                             <Sequence.Variables>
                                               <Variable x:TypeArguments="x:String" Name="file" />
                                               <Variable x:TypeArguments="x:String" Name="processNum" />
@@ -945,26 +1093,27 @@
                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
-                                            <If sap:VirtualizedContainerService.HintSize="1401,4003" sap2010:WorkflowViewState.IdRef="If_36">
+                                            <If sap:VirtualizedContainerService.HintSize="1058,4418" sap2010:WorkflowViewState.IdRef="If_36">
                                               <If.Condition>
                                                 <InArgument x:TypeArguments="x:Boolean">
                                                   <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_319">filesDict.Keys.ElementAt(I).ToString().Trim() == clientEmails.Values.ElementAt(J)[0].Trim()</mca:CSharpValue>
                                                 </InArgument>
                                               </If.Condition>
                                               <If.Then>
-                                                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="1365,3827" sap2010:WorkflowViewState.IdRef="Sequence_76">
+                                                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="1022,4242" sap2010:WorkflowViewState.IdRef="Sequence_76">
                                                   <Sequence.Variables>
                                                     <Variable x:TypeArguments="s:String[]" Name="DirectoriesArr" />
                                                     <Variable x:TypeArguments="x:Int32" Name="dirIndex" />
                                                     <Variable x:TypeArguments="x:String" Name="startTime" />
                                                     <Variable x:TypeArguments="sd:DataTable" Name="clientLogger" />
+                                                    <Variable x:TypeArguments="x:String" Name="clientLoggerPath" />
                                                   </Sequence.Variables>
                                                   <sap:WorkflowViewStateService.ViewState>
                                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                     </scg:Dictionary>
                                                   </sap:WorkflowViewStateService.ViewState>
-                                                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1323,222" sap2010:WorkflowViewState.IdRef="MultipleAssign_17">
+                                                  <ui:MultipleAssign sap2010:Annotation.AnnotationText="Take down the &quot;\\test\\&quot; in the clientLoggerPath before production." DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="980,295" sap2010:WorkflowViewState.IdRef="MultipleAssign_17">
                                                     <ui:MultipleAssign.AssignOperations>
                                                       <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
                                                         <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_44">
@@ -1027,10 +1176,27 @@
                                                             </InArgument>
                                                           </ui:AssignOperation.Value>
                                                         </ui:AssignOperation>
+                                                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_102">
+                                                          <ui:AssignOperation.To>
+                                                            <OutArgument x:TypeArguments="x:String">
+                                                              <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_253">clientLoggerPath</mca:CSharpReference>
+                                                            </OutArgument>
+                                                          </ui:AssignOperation.To>
+                                                          <ui:AssignOperation.Value>
+                                                            <InArgument x:TypeArguments="x:String">
+                                                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_549">in_Config["ServerBaseURL"].ToString()+"\\"+DateTime.Now.ToString("yyyy")+"\\Test\\"+clientEmails.Keys.ElementAt(J).ToString()+"\\Logs"+DateTime.Now.ToString("MMMM")+"_logs.xlsx"</mca:CSharpValue>
+                                                            </InArgument>
+                                                          </ui:AssignOperation.Value>
+                                                        </ui:AssignOperation>
                                                       </scg:List>
                                                     </ui:MultipleAssign.AssignOperations>
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
                                                   </ui:MultipleAssign>
-                                                  <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This code is to get the process number our from the file path" Code="for (int i=0; i&lt; file.Length; i++)&#xA;{&#xA;    if (Char.IsDigit(file[i]))&#xA;        processNum += file[i];&#xA;}&#xA;" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="1323,206" sap2010:WorkflowViewState.IdRef="InvokeCode_7" Language="CSharp">
+                                                  <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This code is to get the process number our from the file path" Code="for (int i=0; i&lt; file.Length; i++)&#xA;{&#xA;    if (Char.IsDigit(file[i]))&#xA;        processNum += file[i];&#xA;}&#xA;" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="980,206" sap2010:WorkflowViewState.IdRef="InvokeCode_7" Language="CSharp">
                                                     <ui:InvokeCode.Arguments>
                                                       <InArgument x:TypeArguments="x:String" x:Key="file">
                                                         <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_295">file</mca:CSharpValue>
@@ -1045,31 +1211,30 @@
                                                       </scg:Dictionary>
                                                     </sap:WorkflowViewStateService.ViewState>
                                                   </ui:InvokeCode>
-                                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Continue from here&#xD;&#xA;" DisplayName="Invoke AddIntoLogger workflow" sap:VirtualizedContainerService.HintSize="1323,154" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Logs\\AddIntoLogger.xaml">
+                                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AddIntoLogger workflow" sap:VirtualizedContainerService.HintSize="980,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Logs\\AddIntoLogger.xaml">
                                                     <ui:InvokeWorkflowFile.Arguments>
                                                       <InArgument x:TypeArguments="x:String" x:Key="in_TimeStart">
                                                         <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_541">startTime</mca:CSharpValue>
                                                       </InArgument>
                                                       <InArgument x:TypeArguments="x:String" x:Key="in_TimeEnd" />
-                                                      <InArgument x:TypeArguments="x:String" x:Key="in_Notes" />
-                                                      <InArgument x:TypeArguments="x:String" x:Key="in_Action">Starting to assign files</InArgument>
+                                                      <InArgument x:TypeArguments="x:String" x:Key="in_Notes">
+                                                        <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_542">"Getting the process number from the path , process number: "+processNum</mca:CSharpValue>
+                                                      </InArgument>
+                                                      <InArgument x:TypeArguments="x:String" x:Key="in_Action">
+                                                        <Literal x:TypeArguments="x:String">Starting to assign files</Literal>
+                                                      </InArgument>
                                                       <InOutArgument x:TypeArguments="sd:DataTable" x:Key="InOut_LoggerDt">
                                                         <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_249">clientLogger</mca:CSharpReference>
                                                       </InOutArgument>
                                                     </ui:InvokeWorkflowFile.Arguments>
-                                                    <sap:WorkflowViewStateService.ViewState>
-                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                                      </scg:Dictionary>
-                                                    </sap:WorkflowViewStateService.ViewState>
                                                   </ui:InvokeWorkflowFile>
-                                                  <ui:ForEach x:TypeArguments="x:String" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1323,3033" sap2010:WorkflowViewState.IdRef="ForEach`1_46">
+                                                  <ui:ForEach x:TypeArguments="x:String" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="980,3417" sap2010:WorkflowViewState.IdRef="ForEach`1_46">
                                                     <ui:ForEach.Body>
                                                       <ActivityAction x:TypeArguments="x:String">
                                                         <ActivityAction.Argument>
                                                           <DelegateInArgument x:TypeArguments="x:String" Name="dir" />
                                                         </ActivityAction.Argument>
-                                                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1287,2900" sap2010:WorkflowViewState.IdRef="Sequence_75">
+                                                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="944,3284" sap2010:WorkflowViewState.IdRef="Sequence_75">
                                                           <Sequence.Variables>
                                                             <Variable x:TypeArguments="x:String" Name="directoryProcessNum" />
                                                           </Sequence.Variables>
@@ -1078,7 +1243,7 @@
                                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                             </scg:Dictionary>
                                                           </sap:WorkflowViewStateService.ViewState>
-                                                          <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1245,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_18">
+                                                          <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="902,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_18">
                                                             <ui:MultipleAssign.AssignOperations>
                                                               <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                                                                 <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_47">
@@ -1108,7 +1273,7 @@
                                                               </scg:List>
                                                             </ui:MultipleAssign.AssignOperations>
                                                           </ui:MultipleAssign>
-                                                          <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This code is to get the process number our from the path (DirectoriesArr[dirIndex]) so later we can check if the path is equal to the the processNum" Code="for (int i=0; i&lt; dirPath.Length; i++)&#xA;{&#xA;    if (Char.IsDigit(dirPath[i]))&#xA;        directoryProcessNum += dirPath[i];&#xA;}&#xA;" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="1245,221" sap2010:WorkflowViewState.IdRef="InvokeCode_8" Language="CSharp">
+                                                          <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This code is to get the process number our from the path (DirectoriesArr[dirIndex]) so later we can check if the path is equal to the the processNum" Code="for (int i=0; i&lt; dirPath.Length; i++)&#xA;{&#xA;    if (Char.IsDigit(dirPath[i]))&#xA;        directoryProcessNum += dirPath[i];&#xA;}&#xA;" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="902,221" sap2010:WorkflowViewState.IdRef="InvokeCode_8" Language="CSharp">
                                                             <ui:InvokeCode.Arguments>
                                                               <InArgument x:TypeArguments="x:String" x:Key="dirPath">
                                                                 <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_297">DirectoriesArr[dirIndex]</mca:CSharpValue>
@@ -1123,14 +1288,14 @@
                                                               </scg:Dictionary>
                                                             </sap:WorkflowViewStateService.ViewState>
                                                           </ui:InvokeCode>
-                                                          <If sap:VirtualizedContainerService.HintSize="1245,2378" sap2010:WorkflowViewState.IdRef="If_35">
+                                                          <If sap:VirtualizedContainerService.HintSize="902,2762" sap2010:WorkflowViewState.IdRef="If_35">
                                                             <If.Condition>
                                                               <InArgument x:TypeArguments="x:Boolean">
                                                                 <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_298">directoryProcessNum == processNum &amp;&amp; DirectoriesArr[dirIndex].Contains("אקסל מקור מהלקוח")</mca:CSharpValue>
                                                               </InArgument>
                                                             </If.Condition>
                                                             <If.Then>
-                                                              <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1209,2202" sap2010:WorkflowViewState.IdRef="TryCatch_7">
+                                                              <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="866,2586" sap2010:WorkflowViewState.IdRef="TryCatch_7">
                                                                 <sap:WorkflowViewStateService.ViewState>
                                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1138,7 +1303,7 @@
                                                                   </scg:Dictionary>
                                                                 </sap:WorkflowViewStateService.ViewState>
                                                                 <TryCatch.Try>
-                                                                  <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="1171,1975" sap2010:WorkflowViewState.IdRef="Sequence_73">
+                                                                  <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="828,2359" sap2010:WorkflowViewState.IdRef="Sequence_73">
                                                                     <Sequence.Variables>
                                                                       <Variable x:TypeArguments="sd:DataTable" Name="innerDt" />
                                                                     </Sequence.Variables>
@@ -1148,7 +1313,7 @@
                                                                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                                       </scg:Dictionary>
                                                                     </sap:WorkflowViewStateService.ViewState>
-                                                                    <ui:MoveFile ContinueOnError="{x:Null}" DisplayName="Move File" sap:VirtualizedContainerService.HintSize="1129,157" sap2010:WorkflowViewState.IdRef="MoveFile_3" Overwrite="True">
+                                                                    <ui:MoveFile ContinueOnError="{x:Null}" DisplayName="Move File" sap:VirtualizedContainerService.HintSize="786,157" sap2010:WorkflowViewState.IdRef="MoveFile_3" Overwrite="True">
                                                                       <ui:MoveFile.Destination>
                                                                         <InArgument x:TypeArguments="x:String">
                                                                           <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_322">clientsArr.Where(x=&gt;x.Contains(clientEmails.Keys.ElementAt(J))).ElementAt(0)+"\\"+DirectoriesArr[dirIndex].ToString()</mca:CSharpValue>
@@ -1160,39 +1325,49 @@
                                                                         </InArgument>
                                                                       </ui:MoveFile.Path>
                                                                     </ui:MoveFile>
-                                                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1129,91" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Trace">
-                                                                      <ui:LogMessage.Message>
-                                                                        <InArgument x:TypeArguments="x:Object">
-                                                                          <mca:CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_301">"Succefully moved the file!"</mca:CSharpValue>
+                                                                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AddIntoLogger workflow" sap:VirtualizedContainerService.HintSize="786,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Logs\\AddIntoLogger.xaml">
+                                                                      <ui:InvokeWorkflowFile.Arguments>
+                                                                        <InArgument x:TypeArguments="x:String" x:Key="in_TimeStart">
+                                                                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_543">startTime</mca:CSharpValue>
                                                                         </InArgument>
-                                                                      </ui:LogMessage.Message>
-                                                                    </ui:LogMessage>
-                                                                    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="1129,1555" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
+                                                                        <InArgument x:TypeArguments="x:String" x:Key="in_TimeEnd" />
+                                                                        <InArgument x:TypeArguments="x:String" x:Key="in_Notes">
+                                                                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_544">"Successfully moved :"+filesDict.Values.ElementAt(I).ElementAt(0).Trim()+" , to :"+clientsArr.Where(x=&gt;x.Contains(clientEmails.Keys.ElementAt(J))).ElementAt(0)+"\\"+DirectoriesArr[dirIndex].ToString()</mca:CSharpValue>
+                                                                        </InArgument>
+                                                                        <InArgument x:TypeArguments="x:String" x:Key="in_Action">
+                                                                          <Literal x:TypeArguments="x:String">Moved files successfully</Literal>
+                                                                        </InArgument>
+                                                                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="InOut_LoggerDt">
+                                                                          <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_251">clientLogger</mca:CSharpReference>
+                                                                        </InOutArgument>
+                                                                      </ui:InvokeWorkflowFile.Arguments>
+                                                                    </ui:InvokeWorkflowFile>
+                                                                    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="786,1918" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
                                                                       <ui:ForEachRow.Body>
                                                                         <ActivityAction x:TypeArguments="sd:DataRow">
                                                                           <ActivityAction.Argument>
                                                                             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                                                                           </ActivityAction.Argument>
-                                                                          <If sap:VirtualizedContainerService.HintSize="1095,1436" sap2010:WorkflowViewState.IdRef="If_45">
+                                                                          <If sap:VirtualizedContainerService.HintSize="752,1799" sap2010:WorkflowViewState.IdRef="If_45">
                                                                             <If.Condition>
                                                                               <InArgument x:TypeArguments="x:Boolean">
                                                                                 <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_345">CurrentRow.ItemArray[0].ToString() == clientsArr.Where(x=&gt;x.Contains(clientEmails.Keys.ElementAt(J))).ElementAt(0).Remove(0,clientsArr.Where(x=&gt;x.Contains(clientEmails.Keys.ElementAt(J))).ElementAt(0).LastIndexOf("\\")+1).ToString()</mca:CSharpValue>
                                                                               </InArgument>
                                                                             </If.Condition>
                                                                             <If.Then>
-                                                                              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="716,1279" sap2010:WorkflowViewState.IdRef="Sequence_87">
+                                                                              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="716,1623" sap2010:WorkflowViewState.IdRef="Sequence_87">
                                                                                 <sap:WorkflowViewStateService.ViewState>
                                                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                                   </scg:Dictionary>
                                                                                 </sap:WorkflowViewStateService.ViewState>
-                                                                                <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="674,1125" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_8" InstanceCachePeriod="3000" Visible="False">
+                                                                                <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="674,1317" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_8" InstanceCachePeriod="3000" Visible="False">
                                                                                   <ui:ExcelApplicationScope.Body>
                                                                                     <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                                                                                       <ActivityAction.Argument>
                                                                                         <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                                                                                       </ActivityAction.Argument>
-                                                                                      <Sequence DisplayName="Excel application scope" sap:VirtualizedContainerService.HintSize="640,1016" sap2010:WorkflowViewState.IdRef="Sequence_86">
+                                                                                      <Sequence DisplayName="Excel application scope" sap:VirtualizedContainerService.HintSize="640,1168" sap2010:WorkflowViewState.IdRef="Sequence_86">
                                                                                         <Sequence.Variables>
                                                                                           <Variable x:TypeArguments="scg:IEnumerable(x:Object)" Name="col" />
                                                                                           <Variable x:TypeArguments="x:Int32" Name="index" />
@@ -1209,20 +1384,20 @@
                                                                                             </OutArgument>
                                                                                           </ui:ExcelReadColumn.Result>
                                                                                         </ui:ExcelReadColumn>
-                                                                                        <ui:ForEach x:TypeArguments="x:Object" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="598,825" sap2010:WorkflowViewState.IdRef="ForEach`1_49">
+                                                                                        <ui:ForEach x:TypeArguments="x:Object" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="598,977" sap2010:WorkflowViewState.IdRef="ForEach`1_49">
                                                                                           <ui:ForEach.Body>
                                                                                             <ActivityAction x:TypeArguments="x:Object">
                                                                                               <ActivityAction.Argument>
                                                                                                 <DelegateInArgument x:TypeArguments="x:Object" Name="colVal" />
                                                                                               </ActivityAction.Argument>
-                                                                                              <If sap:VirtualizedContainerService.HintSize="562,692" sap2010:WorkflowViewState.IdRef="If_44">
+                                                                                              <If sap:VirtualizedContainerService.HintSize="562,844" sap2010:WorkflowViewState.IdRef="If_44">
                                                                                                 <If.Condition>
                                                                                                   <InArgument x:TypeArguments="x:Boolean">
                                                                                                     <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_339">directoryProcessNum == colVal.ToString()</mca:CSharpValue>
                                                                                                   </InArgument>
                                                                                                 </If.Condition>
                                                                                                 <If.Then>
-                                                                                                  <Sequence sap:VirtualizedContainerService.HintSize="526,516" sap2010:WorkflowViewState.IdRef="Sequence_85">
+                                                                                                  <Sequence sap:VirtualizedContainerService.HintSize="526,668" sap2010:WorkflowViewState.IdRef="Sequence_85">
                                                                                                     <Sequence.Variables>
                                                                                                       <Variable x:TypeArguments="x:String" Name="clientResponseFirstMail" />
                                                                                                     </Sequence.Variables>
@@ -1259,6 +1434,23 @@
                                                                                                         </ui:ExcelWriteCell>
                                                                                                       </If.Then>
                                                                                                     </If>
+                                                                                                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AddIntoLogger workflow" sap:VirtualizedContainerService.HintSize="484,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Logs\\AddIntoLogger.xaml">
+                                                                                                      <ui:InvokeWorkflowFile.Arguments>
+                                                                                                        <InArgument x:TypeArguments="x:String" x:Key="in_TimeStart">
+                                                                                                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_546">startTime</mca:CSharpValue>
+                                                                                                        </InArgument>
+                                                                                                        <InArgument x:TypeArguments="x:String" x:Key="in_TimeEnd" />
+                                                                                                        <InArgument x:TypeArguments="x:String" x:Key="in_Notes">
+                                                                                                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_545">"Matrix :"+CurrentRow.ItemArray[2].ToString()+" ,at column \"AI"+(7+index)+"\""</mca:CSharpValue>
+                                                                                                        </InArgument>
+                                                                                                        <InArgument x:TypeArguments="x:String" x:Key="in_Action">
+                                                                                                          <Literal x:TypeArguments="x:String">Updating matrix</Literal>
+                                                                                                        </InArgument>
+                                                                                                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="InOut_LoggerDt">
+                                                                                                          <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_252">clientLogger</mca:CSharpReference>
+                                                                                                        </InOutArgument>
+                                                                                                      </ui:InvokeWorkflowFile.Arguments>
+                                                                                                    </ui:InvokeWorkflowFile>
                                                                                                     <ui:Break sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="Break_1" />
                                                                                                   </Sequence>
                                                                                                 </If.Then>
@@ -1291,18 +1483,19 @@
                                                                                     </InArgument>
                                                                                   </ui:ExcelApplicationScope.WorkbookPath>
                                                                                 </ui:ExcelApplicationScope>
+                                                                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke WriteIntoLogger workflow" sap:VirtualizedContainerService.HintSize="674,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Logs\\WriteIntoLogger.xaml">
+                                                                                  <ui:InvokeWorkflowFile.Arguments>
+                                                                                    <InArgument x:TypeArguments="x:String" x:Key="in_LoggerFilePath">
+                                                                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_550">clientLoggerPath</mca:CSharpValue>
+                                                                                    </InArgument>
+                                                                                    <InArgument x:TypeArguments="sd:DataTable" x:Key="in_LoggerDt">
+                                                                                      <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_548">clientLogger</mca:CSharpValue>
+                                                                                    </InArgument>
+                                                                                  </ui:InvokeWorkflowFile.Arguments>
+                                                                                </ui:InvokeWorkflowFile>
                                                                                 <ui:Break sap:VirtualizedContainerService.HintSize="674,22" sap2010:WorkflowViewState.IdRef="Break_2" />
                                                                               </Sequence>
                                                                             </If.Then>
-                                                                            <If.Else>
-                                                                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Info">
-                                                                                <ui:LogMessage.Message>
-                                                                                  <InArgument x:TypeArguments="x:Object">
-                                                                                    <mca:CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_346">CurrentRow.ItemArray[0].ToString()</mca:CSharpValue>
-                                                                                  </InArgument>
-                                                                                </ui:LogMessage.Message>
-                                                                              </ui:LogMessage>
-                                                                            </If.Else>
                                                                           </If>
                                                                         </ActivityAction>
                                                                       </ui:ForEachRow.Body>
@@ -1315,7 +1508,7 @@
                                                                   </Sequence>
                                                                 </TryCatch.Try>
                                                                 <TryCatch.Catches>
-                                                                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="1175,21" sap2010:WorkflowViewState.IdRef="Catch`1_7">
+                                                                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="832,21" sap2010:WorkflowViewState.IdRef="Catch`1_7">
                                                                     <sap:WorkflowViewStateService.ViewState>
                                                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1399,7 +1592,7 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                               </ui:RepeatNumberOfTimesX>
-                              <Sequence sap2010:Annotation.AnnotationText="If files are remaining in the document folder we move them into Unknown_files location in the server." DisplayName="Body" sap:VirtualizedContainerService.HintSize="1511,1400" sap2010:WorkflowViewState.IdRef="Sequence_90">
+                              <Sequence sap2010:Annotation.AnnotationText="If files are remaining in the document folder we move them into Unknown_files location in the server." DisplayName="Body" sap:VirtualizedContainerService.HintSize="1168,1400" sap2010:WorkflowViewState.IdRef="Sequence_90">
                                 <Sequence.Variables>
                                   <Variable x:TypeArguments="s:String[]" Name="tmpFiles" />
                                   <Variable x:TypeArguments="x:String" Name="path" />
@@ -1542,56 +1735,120 @@
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1678,3851" sap2010:WorkflowViewState.IdRef="TryCatch_8">
+                                  <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1020,4293" sap2010:WorkflowViewState.IdRef="TryCatch_8">
                                     <TryCatch.Try>
-                                      <Sequence sap:VirtualizedContainerService.HintSize="1640,3624" sap2010:WorkflowViewState.IdRef="Sequence_93">
+                                      <Sequence sap:VirtualizedContainerService.HintSize="982,4066" sap2010:WorkflowViewState.IdRef="Sequence_93">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
-                                        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="1598,3532" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
+                                        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="940,3974" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
                                           <ui:ForEachRow.Body>
                                             <ActivityAction x:TypeArguments="sd:DataRow">
                                               <ActivityAction.Argument>
                                                 <DelegateInArgument x:TypeArguments="sd:DataRow" Name="InnerDtCurrentRow" />
                                               </ActivityAction.Argument>
-                                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1564,3412" sap2010:WorkflowViewState.IdRef="Sequence_94">
+                                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="906,3854" sap2010:WorkflowViewState.IdRef="Sequence_94">
                                                 <sap:WorkflowViewStateService.ViewState>
                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                   </scg:Dictionary>
                                                 </sap:WorkflowViewStateService.ViewState>
-                                                <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="1522,3320" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_10" InstanceCachePeriod="3000" Visible="False">
+                                                <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="864,3762" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_10" InstanceCachePeriod="3000" Visible="False">
                                                   <ui:ExcelApplicationScope.Body>
                                                     <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                                                       <ActivityAction.Argument>
                                                         <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                                                       </ActivityAction.Argument>
-                                                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1488,3211" sap2010:WorkflowViewState.IdRef="Sequence_95">
+                                                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="830,3613" sap2010:WorkflowViewState.IdRef="Sequence_95">
                                                         <Sequence.Variables>
                                                           <Variable x:TypeArguments="sd:DataTable" Name="ClientDt" />
                                                           <Variable x:TypeArguments="x:Int32" Name="clientRowIndex" />
+                                                          <Variable x:TypeArguments="x:String" Name="clientLoggerPath" />
+                                                          <Variable x:TypeArguments="sd:DataTable" Name="clientLogger" />
+                                                          <Variable x:TypeArguments="x:String" Name="clientCompanyName" />
                                                         </Sequence.Variables>
                                                         <sap:WorkflowViewStateService.ViewState>
                                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                           </scg:Dictionary>
                                                         </sap:WorkflowViewStateService.ViewState>
-                                                        <ui:ExcelReadRange AddHeaders="True" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="1446,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_6" Range="A6" SheetName="מטריצת בקרות">
+                                                        <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="788,160" sap2010:WorkflowViewState.IdRef="MultipleAssign_38">
+                                                          <ui:MultipleAssign.AssignOperations>
+                                                            <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_107">
+                                                                <ui:AssignOperation.To>
+                                                                  <OutArgument x:TypeArguments="sd:DataTable">
+                                                                    <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_261">clientLogger</mca:CSharpReference>
+                                                                  </OutArgument>
+                                                                </ui:AssignOperation.To>
+                                                                <ui:AssignOperation.Value>
+                                                                  <InArgument x:TypeArguments="sd:DataTable">
+                                                                    <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_560">loggerDt</mca:CSharpValue>
+                                                                  </InArgument>
+                                                                </ui:AssignOperation.Value>
+                                                              </ui:AssignOperation>
+                                                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_108">
+                                                                <ui:AssignOperation.To>
+                                                                  <OutArgument x:TypeArguments="x:String">
+                                                                    <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_266">clientCompanyName</mca:CSharpReference>
+                                                                  </OutArgument>
+                                                                </ui:AssignOperation.To>
+                                                                <ui:AssignOperation.Value>
+                                                                  <InArgument x:TypeArguments="x:String">
+                                                                    <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_568">InnerDtCurrentRow.ItemArray[ innerDt.Columns.IndexOf("ClientName")].ToString()</mca:CSharpValue>
+                                                                  </InArgument>
+                                                                </ui:AssignOperation.Value>
+                                                              </ui:AssignOperation>
+                                                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_109">
+                                                                <ui:AssignOperation.To>
+                                                                  <OutArgument x:TypeArguments="x:String">
+                                                                    <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_263">clientLoggerPath</mca:CSharpReference>
+                                                                  </OutArgument>
+                                                                </ui:AssignOperation.To>
+                                                                <ui:AssignOperation.Value>
+                                                                  <InArgument x:TypeArguments="x:String">
+                                                                    <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_562">in_Config["ServerBaseURL"].ToString()+"\\"+DateTime.Now.ToString("yyyy")+"\\Test\\"+clientCompanyName+"\\Logs"+DateTime.Now.ToString("MMMM")+"_logs.xlsx"</mca:CSharpValue>
+                                                                  </InArgument>
+                                                                </ui:AssignOperation.Value>
+                                                              </ui:AssignOperation>
+                                                            </scg:List>
+                                                          </ui:MultipleAssign.AssignOperations>
+                                                        </ui:MultipleAssign>
+                                                        <ui:ExcelReadRange AddHeaders="True" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="788,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_6" Range="A6" SheetName="מטריצת בקרות">
                                                           <ui:ExcelReadRange.DataTable>
                                                             <OutArgument x:TypeArguments="sd:DataTable">
                                                               <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_167">ClientDt</mca:CSharpReference>
                                                             </OutArgument>
                                                           </ui:ExcelReadRange.DataTable>
                                                         </ui:ExcelReadRange>
-                                                        <ui:ForEachRow ColumnNames="{x:Null}" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="1446,3020" sap2010:WorkflowViewState.IdRef="ForEachRow_6">
+                                                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AddIntoLogger workflow" sap:VirtualizedContainerService.HintSize="788,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Logs\\AddIntoLogger.xaml">
+                                                          <ui:InvokeWorkflowFile.Arguments>
+                                                            <InArgument x:TypeArguments="x:String" x:Key="in_TimeStart">
+                                                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_563">DateTime.Now.ToString()</mca:CSharpValue>
+                                                            </InArgument>
+                                                            <InArgument x:TypeArguments="x:String" x:Key="in_TimeEnd">
+                                                              <Literal x:TypeArguments="x:String" Value="" />
+                                                            </InArgument>
+                                                            <InArgument x:TypeArguments="x:String" x:Key="in_Notes">
+                                                              <Literal x:TypeArguments="x:String" Value="" />
+                                                            </InArgument>
+                                                            <InArgument x:TypeArguments="x:String" x:Key="in_Action">
+                                                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_564">"Checking if reminder is necessary for :"+clientCompanyName</mca:CSharpValue>
+                                                            </InArgument>
+                                                            <InOutArgument x:TypeArguments="sd:DataTable" x:Key="InOut_LoggerDt">
+                                                              <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_264">clientLogger</mca:CSharpReference>
+                                                            </InOutArgument>
+                                                          </ui:InvokeWorkflowFile.Arguments>
+                                                        </ui:InvokeWorkflowFile>
+                                                        <ui:ForEachRow ColumnNames="{x:Null}" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="788,2918" sap2010:WorkflowViewState.IdRef="ForEachRow_6">
                                                           <ui:ForEachRow.Body>
                                                             <ActivityAction x:TypeArguments="sd:DataRow">
                                                               <ActivityAction.Argument>
                                                                 <DelegateInArgument x:TypeArguments="sd:DataRow" Name="ClientRow" />
                                                               </ActivityAction.Argument>
-                                                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1412,2901" sap2010:WorkflowViewState.IdRef="Sequence_96">
+                                                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="754,2799" sap2010:WorkflowViewState.IdRef="Sequence_96">
                                                                 <Sequence.Variables>
                                                                   <Variable x:TypeArguments="x:String" Name="firstEmail" />
                                                                   <Variable x:TypeArguments="x:String" Name="reminderSent" />
@@ -1608,7 +1865,7 @@
                                                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                   </scg:Dictionary>
                                                                 </sap:WorkflowViewStateService.ViewState>
-                                                                <TryCatch DisplayName="Try Catch - Convert the value of hours till reminder to int" sap:VirtualizedContainerService.HintSize="1370,287" sap2010:WorkflowViewState.IdRef="TryCatch_9">
+                                                                <TryCatch DisplayName="Try Catch - Convert the value of hours till reminder to int" sap:VirtualizedContainerService.HintSize="712,287" sap2010:WorkflowViewState.IdRef="TryCatch_9">
                                                                   <TryCatch.Try>
                                                                     <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_8">
                                                                       <Assign.To>
@@ -1649,16 +1906,16 @@
                                                                     </Catch>
                                                                   </TryCatch.Catches>
                                                                 </TryCatch>
-                                                                <ui:ExcelReadCell Cell="D4" DisplayName="Read Cell - timePeriod" sap:VirtualizedContainerService.HintSize="1370,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_10" SheetName="מטריצת בקרות">
+                                                                <ui:ExcelReadCell Cell="D4" DisplayName="Read Cell - timePeriod" sap:VirtualizedContainerService.HintSize="712,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_10" SheetName="מטריצת בקרות">
                                                                   <ui:ExcelReadCell.Result>
                                                                     <OutArgument x:TypeArguments="x:String">
                                                                       <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_196">timePeriod</mca:CSharpReference>
                                                                     </OutArgument>
                                                                   </ui:ExcelReadCell.Result>
                                                                 </ui:ExcelReadCell>
-                                                                <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1370,253" sap2010:WorkflowViewState.IdRef="MultipleAssign_21">
+                                                                <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="712,253" sap2010:WorkflowViewState.IdRef="MultipleAssign_21">
                                                                   <ui:MultipleAssign.AssignOperations>
-                                                                    <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+                                                                    <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
                                                                       <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_53">
                                                                         <ui:AssignOperation.To>
                                                                           <OutArgument x:TypeArguments="x:String">
@@ -1740,21 +1997,21 @@
                                                                     </scg:Dictionary>
                                                                   </sap:WorkflowViewStateService.ViewState>
                                                                 </ui:MultipleAssign>
-                                                                <If sap:VirtualizedContainerService.HintSize="1370,2090" sap2010:WorkflowViewState.IdRef="If_50">
+                                                                <If sap:VirtualizedContainerService.HintSize="712,1988" sap2010:WorkflowViewState.IdRef="If_50">
                                                                   <If.Condition>
                                                                     <InArgument x:TypeArguments="x:Boolean">
                                                                       <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_380">!String.IsNullOrEmpty(firstEmail)</mca:CSharpValue>
                                                                     </InArgument>
                                                                   </If.Condition>
                                                                   <If.Then>
-                                                                    <If sap:VirtualizedContainerService.HintSize="1334,1914" sap2010:WorkflowViewState.IdRef="If_68">
+                                                                    <If sap:VirtualizedContainerService.HintSize="676,1812" sap2010:WorkflowViewState.IdRef="If_68">
                                                                       <If.Condition>
                                                                         <InArgument x:TypeArguments="x:Boolean">
                                                                           <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_499">String.IsNullOrEmpty(getAns)</mca:CSharpValue>
                                                                         </InArgument>
                                                                       </If.Condition>
                                                                       <If.Then>
-                                                                        <If sap2010:Annotation.AnnotationText="Here we check if no reminder was sent" sap:VirtualizedContainerService.HintSize="1298,1738" sap2010:WorkflowViewState.IdRef="If_67">
+                                                                        <If sap2010:Annotation.AnnotationText="Here we check if no reminder was sent" sap:VirtualizedContainerService.HintSize="640,1636" sap2010:WorkflowViewState.IdRef="If_67">
                                                                           <If.Condition>
                                                                             <InArgument x:TypeArguments="x:Boolean">
                                                                               <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_500">String.IsNullOrEmpty(reminderSent)</mca:CSharpValue>
@@ -1766,10 +2023,11 @@
                                                                             </scg:Dictionary>
                                                                           </sap:WorkflowViewStateService.ViewState>
                                                                           <If.Then>
-                                                                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="1262,1531" sap2010:WorkflowViewState.IdRef="Sequence_124">
+                                                                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="604,1429" sap2010:WorkflowViewState.IdRef="Sequence_124">
                                                                               <Sequence.Variables>
                                                                                 <Variable x:TypeArguments="s:DateTime" Name="now" />
                                                                                 <Variable x:TypeArguments="x:Double" Name="tmp" />
+                                                                                <Variable x:TypeArguments="x:String" Name="startTime" />
                                                                               </Sequence.Variables>
                                                                               <sap:WorkflowViewStateService.ViewState>
                                                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -1777,7 +2035,7 @@
                                                                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                                                 </scg:Dictionary>
                                                                               </sap:WorkflowViewStateService.ViewState>
-                                                                              <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1220,160" sap2010:WorkflowViewState.IdRef="MultipleAssign_33">
+                                                                              <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="562,191" sap2010:WorkflowViewState.IdRef="MultipleAssign_33">
                                                                                 <ui:MultipleAssign.AssignOperations>
                                                                                   <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                                                                                     <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_85">
@@ -1816,17 +2074,29 @@
                                                                                         </InArgument>
                                                                                       </ui:AssignOperation.Value>
                                                                                     </ui:AssignOperation>
+                                                                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_103">
+                                                                                      <ui:AssignOperation.To>
+                                                                                        <OutArgument x:TypeArguments="x:String">
+                                                                                          <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_254">startTime</mca:CSharpReference>
+                                                                                        </OutArgument>
+                                                                                      </ui:AssignOperation.To>
+                                                                                      <ui:AssignOperation.Value>
+                                                                                        <InArgument x:TypeArguments="x:String">
+                                                                                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_551">DateTime.Now.ToString()</mca:CSharpValue>
+                                                                                        </InArgument>
+                                                                                      </ui:AssignOperation.Value>
+                                                                                    </ui:AssignOperation>
                                                                                   </scg:List>
                                                                                 </ui:MultipleAssign.AssignOperations>
                                                                               </ui:MultipleAssign>
-                                                                              <If sap:VirtualizedContainerService.HintSize="1220,1239" sap2010:WorkflowViewState.IdRef="If_66">
+                                                                              <If sap:VirtualizedContainerService.HintSize="562,1106" sap2010:WorkflowViewState.IdRef="If_66">
                                                                                 <If.Condition>
                                                                                   <InArgument x:TypeArguments="x:Boolean">
                                                                                     <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_504">tmp &gt;= hoursTillReminder</mca:CSharpValue>
                                                                                   </InArgument>
                                                                                 </If.Condition>
                                                                                 <If.Then>
-                                                                                  <Sequence DisplayName="tmp &gt;= hoursTillReminder" sap:VirtualizedContainerService.HintSize="1184,1063" sap2010:WorkflowViewState.IdRef="Sequence_123">
+                                                                                  <Sequence DisplayName="tmp &gt;= hoursTillReminder" sap:VirtualizedContainerService.HintSize="526,930" sap2010:WorkflowViewState.IdRef="Sequence_123">
                                                                                     <Sequence.Variables>
                                                                                       <Variable x:TypeArguments="x:String" Name="email" />
                                                                                       <Variable x:TypeArguments="x:String" Name="script" />
@@ -1837,14 +2107,33 @@
                                                                                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                                                       </scg:Dictionary>
                                                                                     </sap:WorkflowViewStateService.ViewState>
-                                                                                    <If sap:VirtualizedContainerService.HintSize="1142,654" sap2010:WorkflowViewState.IdRef="If_65">
+                                                                                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AddIntoLogger workflow" sap:VirtualizedContainerService.HintSize="484,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Logs\\AddIntoLogger.xaml">
+                                                                                      <ui:InvokeWorkflowFile.Arguments>
+                                                                                        <InArgument x:TypeArguments="x:String" x:Key="in_TimeStart">
+                                                                                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_567">startTime</mca:CSharpValue>
+                                                                                        </InArgument>
+                                                                                        <InArgument x:TypeArguments="x:String" x:Key="in_TimeEnd">
+                                                                                          <Literal x:TypeArguments="x:String" Value="" />
+                                                                                        </InArgument>
+                                                                                        <InArgument x:TypeArguments="x:String" x:Key="in_Notes">
+                                                                                          <Literal x:TypeArguments="x:String" Value="" />
+                                                                                        </InArgument>
+                                                                                        <InArgument x:TypeArguments="x:String" x:Key="in_Action">
+                                                                                          <Literal x:TypeArguments="x:String">Sending reminder email</Literal>
+                                                                                        </InArgument>
+                                                                                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="InOut_LoggerDt">
+                                                                                          <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_265">clientLogger</mca:CSharpReference>
+                                                                                        </InOutArgument>
+                                                                                      </ui:InvokeWorkflowFile.Arguments>
+                                                                                    </ui:InvokeWorkflowFile>
+                                                                                    <If sap:VirtualizedContainerService.HintSize="484,217" sap2010:WorkflowViewState.IdRef="If_65">
                                                                                       <If.Condition>
                                                                                         <InArgument x:TypeArguments="x:Boolean">
                                                                                           <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_505">clientLang.ToLower().Equals("he")</mca:CSharpValue>
                                                                                         </InArgument>
                                                                                       </If.Condition>
                                                                                       <If.Then>
-                                                                                        <If DisplayName="If - getting hebrew tamplates" sap:VirtualizedContainerService.HintSize="897,497" sap2010:WorkflowViewState.IdRef="If_63">
+                                                                                        <If DisplayName="If - getting hebrew tamplates" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_63">
                                                                                           <If.Condition>
                                                                                             <InArgument x:TypeArguments="x:Boolean">
                                                                                               <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_506">string.IsNullOrEmpty( ClientRow.ItemArray[ ClientDt.Columns.IndexOf("ראיות נדרשות דוח מערכת שלב 1")].ToString())</mca:CSharpValue>
@@ -1852,7 +2141,7 @@
                                                                                           </If.Condition>
                                                                                           <sap:WorkflowViewStateService.ViewState>
                                                                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                                                                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                                                             </scg:Dictionary>
                                                                                           </sap:WorkflowViewStateService.ViewState>
@@ -2104,7 +2393,7 @@ $Mail.HTMLBody  = "+email + "\n$Mail.display()"</mca:CSharpValue>
                                                                                         </If>
                                                                                       </If.Else>
                                                                                     </If>
-                                                                                    <ui:InvokePowerShell x:TypeArguments="sma:PSObject" ContinueOnError="{x:Null}" DisplayName="Invoke Power Shell" sap:VirtualizedContainerService.HintSize="1142,59" sap2010:WorkflowViewState.IdRef="InvokePowerShell`1_5" IsScript="True">
+                                                                                    <ui:InvokePowerShell x:TypeArguments="sma:PSObject" ContinueOnError="{x:Null}" DisplayName="Invoke Power Shell" sap:VirtualizedContainerService.HintSize="484,59" sap2010:WorkflowViewState.IdRef="InvokePowerShell`1_5" IsScript="True">
                                                                                       <ui:InvokePowerShell.CommandText>
                                                                                         <InArgument x:TypeArguments="x:String">
                                                                                           <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_521">script</mca:CSharpValue>
@@ -2116,7 +2405,7 @@ $Mail.HTMLBody  = "+email + "\n$Mail.display()"</mca:CSharpValue>
                                                                                         </InArgument>
                                                                                       </ui:InvokePowerShell.PowerShellVariables>
                                                                                     </ui:InvokePowerShell>
-                                                                                    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'outlook.exe'" sap:VirtualizedContainerService.HintSize="1142,51" sap2010:WorkflowViewState.IdRef="WindowScope_3" InformativeScreenshot="079147b5cc358800cdce62363cd7ed08" Selector="&lt;wnd app='outlook.exe' cls='rctrl_renwnd32' /&gt;">
+                                                                                    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'outlook.exe'" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="WindowScope_3" InformativeScreenshot="079147b5cc358800cdce62363cd7ed08" Selector="&lt;wnd app='outlook.exe' cls='rctrl_renwnd32' /&gt;">
                                                                                       <ui:WindowScope.Body>
                                                                                         <ActivityAction x:TypeArguments="x:Object">
                                                                                           <ActivityAction.Argument>
@@ -2153,7 +2442,7 @@ $Mail.HTMLBody  = "+email + "\n$Mail.display()"</mca:CSharpValue>
                                                                                         </scg:Dictionary>
                                                                                       </sap:WorkflowViewStateService.ViewState>
                                                                                     </ui:WindowScope>
-                                                                                    <ui:ExcelWriteCell DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="1142,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_7" SheetName="מטריצת בקרות">
+                                                                                    <ui:ExcelWriteCell DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="484,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_7" SheetName="מטריצת בקרות">
                                                                                       <ui:ExcelWriteCell.Cell>
                                                                                         <InArgument x:TypeArguments="x:String">
                                                                                           <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_522">"AH"+(7+clientRowIndex)</mca:CSharpValue>
@@ -2165,6 +2454,25 @@ $Mail.HTMLBody  = "+email + "\n$Mail.display()"</mca:CSharpValue>
                                                                                         </InArgument>
                                                                                       </ui:ExcelWriteCell.Text>
                                                                                     </ui:ExcelWriteCell>
+                                                                                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AddIntoLogger workflow" sap:VirtualizedContainerService.HintSize="484,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Logs\\AddIntoLogger.xaml">
+                                                                                      <ui:InvokeWorkflowFile.Arguments>
+                                                                                        <InArgument x:TypeArguments="x:String" x:Key="in_TimeStart">
+                                                                                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_552">startTime</mca:CSharpValue>
+                                                                                        </InArgument>
+                                                                                        <InArgument x:TypeArguments="x:String" x:Key="in_TimeEnd">
+                                                                                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_553">DateTime.Now.ToString()</mca:CSharpValue>
+                                                                                        </InArgument>
+                                                                                        <InArgument x:TypeArguments="x:String" x:Key="in_Notes">
+                                                                                          <Literal x:TypeArguments="x:String">Updated matrix complete</Literal>
+                                                                                        </InArgument>
+                                                                                        <InArgument x:TypeArguments="x:String" x:Key="in_Action">
+                                                                                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_559">"Sent reminder to: "+clientEmail+", reminder was sent after :"+tmp+" hours ,updating matrix at: \"AH"+(7+clientRowIndex)+"\""</mca:CSharpValue>
+                                                                                        </InArgument>
+                                                                                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="InOut_LoggerDt">
+                                                                                          <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_258">clientLogger</mca:CSharpReference>
+                                                                                        </InOutArgument>
+                                                                                      </ui:InvokeWorkflowFile.Arguments>
+                                                                                    </ui:InvokeWorkflowFile>
                                                                                   </Sequence>
                                                                                 </If.Then>
                                                                               </If>
@@ -2189,6 +2497,16 @@ $Mail.HTMLBody  = "+email + "\n$Mail.display()"</mca:CSharpValue>
                                                             </InArgument>
                                                           </ui:ForEachRow.DataTable>
                                                         </ui:ForEachRow>
+                                                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke WriteIntoLogger workflow" sap:VirtualizedContainerService.HintSize="788,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Logs\\WriteIntoLogger.xaml">
+                                                          <ui:InvokeWorkflowFile.Arguments>
+                                                            <InArgument x:TypeArguments="x:String" x:Key="in_LoggerFilePath">
+                                                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_566">clientLoggerPath</mca:CSharpValue>
+                                                            </InArgument>
+                                                            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_LoggerDt">
+                                                              <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_565">clientLogger</mca:CSharpValue>
+                                                            </InArgument>
+                                                          </ui:InvokeWorkflowFile.Arguments>
+                                                        </ui:InvokeWorkflowFile>
                                                       </Sequence>
                                                     </ActivityAction>
                                                   </ui:ExcelApplicationScope.Body>
@@ -2210,7 +2528,7 @@ $Mail.HTMLBody  = "+email + "\n$Mail.display()"</mca:CSharpValue>
                                       </Sequence>
                                     </TryCatch.Try>
                                     <TryCatch.Catches>
-                                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="1644,21" sap2010:WorkflowViewState.IdRef="Catch`1_8">
+                                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="986,21" sap2010:WorkflowViewState.IdRef="Catch`1_8">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
