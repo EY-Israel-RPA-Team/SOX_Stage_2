@@ -4,7 +4,7 @@
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>1146,1923</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1195,2165</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="64">
@@ -85,9 +85,10 @@
       <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
       <AssemblyReference>System.Threading.Tasks.Extensions</AssemblyReference>
       <AssemblyReference>System.Runtime.CompilerServices.Unsafe</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GetMidgamList" sap:VirtualizedContainerService.HintSize="742,1758" sap2010:WorkflowViewState.IdRef="Sequence_132">
+  <Sequence DisplayName="GetMidgamList" sap:VirtualizedContainerService.HintSize="868,2000" sap2010:WorkflowViewState.IdRef="Sequence_132">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="clientCompanyName" />
     </Sequence.Variables>
@@ -96,7 +97,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="700,98" sap2010:WorkflowViewState.IdRef="MultipleAssign_40">
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="826,98" sap2010:WorkflowViewState.IdRef="MultipleAssign_40">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_116">
@@ -114,7 +115,7 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="700,1528" sap2010:WorkflowViewState.IdRef="TryCatch_13">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="826,1770" sap2010:WorkflowViewState.IdRef="TryCatch_13">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -122,13 +123,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <ui:ExcelApplicationScope Password="{x:Null}" sap2010:Annotation.AnnotationText="in_Config[&quot;InnerAddresses&quot;].ToString()&#xA;=&#xA;C:\Users\Almog.Amos\OneDrive - EY\Desktop\SOX\InnerDt.xlsx" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="662,1301" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_15" InstanceCachePeriod="3000" Visible="False" WorkbookPath="C:\Users\Almog.Amos\OneDrive - EY\Desktop\SOX\InnerDt.xlsx">
+        <ui:ExcelApplicationScope Password="{x:Null}" sap2010:Annotation.AnnotationText="InnerDt.xlsx" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="788,1543" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_15" InstanceCachePeriod="3000" Visible="False">
           <ui:ExcelApplicationScope.Body>
             <ActivityAction x:TypeArguments="ui:WorkbookApplication">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="628,1135" sap2010:WorkflowViewState.IdRef="Sequence_133">
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="754,1403" sap2010:WorkflowViewState.IdRef="Sequence_133">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="scg:List(x:String)" Name="clientsList" />
                   <Variable x:TypeArguments="sd:DataTable" Name="tmpDt" />
@@ -138,33 +139,33 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:ExcelGetWorkbookSheets DisplayName="Get Workbook Sheets" sap:VirtualizedContainerService.HintSize="586,22" sap2010:WorkflowViewState.IdRef="ExcelGetWorkbookSheets_3">
+                <ui:ExcelGetWorkbookSheets DisplayName="Get Workbook Sheets" sap:VirtualizedContainerService.HintSize="712,22" sap2010:WorkflowViewState.IdRef="ExcelGetWorkbookSheets_3">
                   <ui:ExcelGetWorkbookSheets.Sheets>
                     <OutArgument x:TypeArguments="scg:List(x:String)">
                       <mca:CSharpReference x:TypeArguments="scg:List(x:String)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_284">clientsList</mca:CSharpReference>
                     </OutArgument>
                   </ui:ExcelGetWorkbookSheets.Sheets>
                 </ui:ExcelGetWorkbookSheets>
-                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="586,981" sap2010:WorkflowViewState.IdRef="ForEach`1_51">
+                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="712,1249" sap2010:WorkflowViewState.IdRef="ForEach`1_51">
                   <ui:ForEach.Body>
                     <ActivityAction x:TypeArguments="x:String">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="x:String" Name="item" />
                       </ActivityAction.Argument>
-                      <If sap:VirtualizedContainerService.HintSize="550,848" sap2010:WorkflowViewState.IdRef="If_71">
+                      <If sap:VirtualizedContainerService.HintSize="676,1116" sap2010:WorkflowViewState.IdRef="If_71">
                         <If.Condition>
                           <InArgument x:TypeArguments="x:Boolean">
                             <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_601">item != "Sheet1"</mca:CSharpValue>
                           </InArgument>
                         </If.Condition>
                         <If.Then>
-                          <Sequence DisplayName="item != Sheet1" sap:VirtualizedContainerService.HintSize="514,672" sap2010:WorkflowViewState.IdRef="Sequence_136">
+                          <Sequence DisplayName="item != Sheet1" sap:VirtualizedContainerService.HintSize="640,940" sap2010:WorkflowViewState.IdRef="Sequence_136">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:ExcelReadRange AddHeaders="False" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="472,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_9">
+                            <ui:ExcelReadRange AddHeaders="False" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="598,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_9">
                               <ui:ExcelReadRange.DataTable>
                                 <OutArgument x:TypeArguments="sd:DataTable">
                                   <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_286">tmpDt</mca:CSharpReference>
@@ -181,34 +182,50 @@
                                 </InArgument>
                               </ui:ExcelReadRange.SheetName>
                             </ui:ExcelReadRange>
-                            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="472,481" sap2010:WorkflowViewState.IdRef="ForEachRow_8">
+                            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="598,749" sap2010:WorkflowViewState.IdRef="ForEachRow_8">
                               <ui:ForEachRow.Body>
                                 <ActivityAction x:TypeArguments="sd:DataRow">
                                   <ActivityAction.Argument>
                                     <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                                   </ActivityAction.Argument>
-                                  <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,362" sap2010:WorkflowViewState.IdRef="TryCatch_15">
+                                  <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="564,630" sap2010:WorkflowViewState.IdRef="TryCatch_15">
                                     <TryCatch.Try>
-                                      <maes:AddToDictionary x:TypeArguments="x:String, x:Int32" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="398,135" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_3">
-                                        <maes:AddToDictionary.Dictionary>
-                                          <InArgument x:TypeArguments="scg:IDictionary(x:String, x:Int32)">
-                                            <mca:CSharpValue x:TypeArguments="scg:IDictionary(x:String, x:Int32)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_620">out_MidgamimDictionary</mca:CSharpValue>
-                                          </InArgument>
-                                        </maes:AddToDictionary.Dictionary>
-                                        <maes:AddToDictionary.Key>
-                                          <InArgument x:TypeArguments="x:String">
-                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_621">CurrentRow.ItemArray[0].ToString()</mca:CSharpValue>
-                                          </InArgument>
-                                        </maes:AddToDictionary.Key>
-                                        <maes:AddToDictionary.Value>
-                                          <InArgument x:TypeArguments="x:Int32">
-                                            <mca:CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_622">Convert.ToInt32(CurrentRow.ItemArray[3].ToString())</mca:CSharpValue>
-                                          </InArgument>
-                                        </maes:AddToDictionary.Value>
-                                      </maes:AddToDictionary>
+                                      <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="526,403" sap2010:WorkflowViewState.IdRef="Sequence_137">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <If sap:VirtualizedContainerService.HintSize="484,311" sap2010:WorkflowViewState.IdRef="If_72">
+                                          <If.Condition>
+                                            <InArgument x:TypeArguments="x:Boolean">
+                                              <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_630">String.IsNullOrEmpty(CurrentRow.ItemArray[2].ToString())</mca:CSharpValue>
+                                            </InArgument>
+                                          </If.Condition>
+                                          <If.Then>
+                                            <maes:AddToDictionary x:TypeArguments="x:String, x:Int32" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="398,135" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_5">
+                                              <maes:AddToDictionary.Dictionary>
+                                                <InArgument x:TypeArguments="scg:IDictionary(x:String, x:Int32)">
+                                                  <mca:CSharpValue x:TypeArguments="scg:IDictionary(x:String, x:Int32)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_627">out_MidgamimDictionary</mca:CSharpValue>
+                                                </InArgument>
+                                              </maes:AddToDictionary.Dictionary>
+                                              <maes:AddToDictionary.Key>
+                                                <InArgument x:TypeArguments="x:String">
+                                                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_628">CurrentRow.ItemArray[0].ToString()</mca:CSharpValue>
+                                                </InArgument>
+                                              </maes:AddToDictionary.Key>
+                                              <maes:AddToDictionary.Value>
+                                                <InArgument x:TypeArguments="x:Int32">
+                                                  <mca:CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_629">Convert.ToInt32(CurrentRow.ItemArray[4].ToString())</mca:CSharpValue>
+                                                </InArgument>
+                                              </maes:AddToDictionary.Value>
+                                            </maes:AddToDictionary>
+                                          </If.Then>
+                                        </If>
+                                      </Sequence>
                                     </TryCatch.Try>
                                     <TryCatch.Catches>
-                                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_15">
+                                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="530,21" sap2010:WorkflowViewState.IdRef="Catch`1_15">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -262,10 +279,15 @@
               <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
+          <ui:ExcelApplicationScope.WorkbookPath>
+            <InArgument x:TypeArguments="x:String">
+              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_625">in_Config["InnerAddresses"].ToString()</mca:CSharpValue>
+            </InArgument>
+          </ui:ExcelApplicationScope.WorkbookPath>
         </ui:ExcelApplicationScope>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="666,21" sap2010:WorkflowViewState.IdRef="Catch`1_13">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="792,21" sap2010:WorkflowViewState.IdRef="Catch`1_13">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
