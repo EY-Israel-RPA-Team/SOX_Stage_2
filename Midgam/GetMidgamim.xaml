@@ -4,7 +4,7 @@
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>1195,2165</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1151,2165</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="64">
@@ -199,7 +199,7 @@
                                         <If sap:VirtualizedContainerService.HintSize="484,311" sap2010:WorkflowViewState.IdRef="If_72">
                                           <If.Condition>
                                             <InArgument x:TypeArguments="x:Boolean">
-                                              <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_630">String.IsNullOrEmpty(CurrentRow.ItemArray[2].ToString())</mca:CSharpValue>
+                                              <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_631">String.IsNullOrEmpty(CurrentRow.ItemArray[1].ToString())</mca:CSharpValue>
                                             </InArgument>
                                           </If.Condition>
                                           <If.Then>
