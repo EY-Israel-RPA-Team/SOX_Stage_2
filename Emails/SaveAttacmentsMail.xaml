@@ -6,7 +6,7 @@
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>1146,1343</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1151,2640</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="64">
@@ -105,7 +105,6 @@
       <AssemblyReference>System.Configuration.Install</AssemblyReference>
       <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
@@ -114,7 +113,7 @@
       <x:Boolean x:Key="ShouldExpandAll">False</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="SaveAttacmentsMail" sap:VirtualizedContainerService.HintSize="693,1178" sap2010:WorkflowViewState.IdRef="Sequence_24">
+  <Sequence DisplayName="SaveAttacmentsMail" sap:VirtualizedContainerService.HintSize="693,2475" sap2010:WorkflowViewState.IdRef="Sequence_24">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:String[]" Name="EmailsFilesPathArr" />
       <Variable x:TypeArguments="x:String" Name="textFileContent" />
@@ -188,20 +187,20 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <Sequence DisplayName="Attachment handller" sap:VirtualizedContainerService.HintSize="651,66" sap2010:WorkflowViewState.IdRef="Sequence_38">
+    <Sequence DisplayName="Attachment handller" sap:VirtualizedContainerService.HintSize="651,1363" sap2010:WorkflowViewState.IdRef="Sequence_38">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Boolean" Name="outlookSecurity" />
       </Sequence.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+      <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="564,894" sap2010:WorkflowViewState.IdRef="TryCatch_2">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -224,7 +223,7 @@
                 </ui:CursorPosition>
               </ui:Click.CursorPosition>
               <ui:Click.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3315c04b-80db-4df9-be7e-4bd86d026a74" InformativeScreenshot="50d7b9f1995e3a6603f4228790266529" Selector="&lt;uia cls='MsoCommandBar' /&gt;&lt;uia cls='NetUIElement' omit:name='Quick Access Toolbar' /&gt;&lt;uia cls='NetUIRibbonButton' name='Project1.*' /&gt;">
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3315c04b-80db-4df9-be7e-4bd86d026a74" InformativeScreenshot="eb6399fd8ccb77d9f23778111bf4a468" Selector="&lt;wnd app='outlook.exe' cls='rctrl_renwnd32' omit:title='Inbox - EYIL.RPA01@il.ey.com - Outlook' /&gt;&lt;uia omit:cls='MsoCommandBar' /&gt;&lt;uia omit:cls='NetUIElement' name='Quick Access Toolbar' /&gt;&lt;uia omit:cls='NetUIRibbonButton' name='Project1.*' /&gt;">
                   <ui:Target.TimeoutMS>
                     <InArgument x:TypeArguments="x:Int32" />
                   </ui:Target.TimeoutMS>
@@ -241,7 +240,7 @@
                 </OutArgument>
               </ui:UiElementExists.Exists>
               <ui:UiElementExists.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="07e95a46-49b8-4e0d-a778-d53c0242ae8f" InformativeScreenshot="2e216f1c503ed066b1497f5540d3693a">
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="07e95a46-49b8-4e0d-a778-d53c0242ae8f" InformativeScreenshot="29456f77f55957482e3e5444ca8dc9f4" Selector="&lt;wnd app='outlook.exe' cls='NUIDialog' title='Microsoft Outlook Security Notice' /&gt;">
                   <ui:Target.TimeoutMS>
                     <InArgument x:TypeArguments="x:Int32" />
                   </ui:Target.TimeoutMS>
@@ -270,7 +269,7 @@
                     </ui:CursorPosition>
                   </ui:Click.CursorPosition>
                   <ui:Click.Target>
-                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="6cc242d6-1bcd-4c14-87bb-f6e1839250a3" InformativeScreenshot="6c3854aa6a4e6fe8586be1a26af7dc05" Selector="&lt;wnd app='outlook.exe' omit:cls='NUIDialog' title='Microsoft Outlook Security Notice' /&gt;&lt;wnd aaname='Microsoft Outlook Security Notice' omit:cls='NetUIHWND' /&gt;&lt;ctrl name='Enable Macros' role='push button' /&gt;">
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="6cc242d6-1bcd-4c14-87bb-f6e1839250a3" InformativeScreenshot="1fd242a6c5b3b9dc92dea1f6d4bd919c" Selector="&lt;wnd app='outlook.exe' cls='NUIDialog' title='Microsoft Outlook Security Notice' /&gt;&lt;wnd aaname='Microsoft Outlook Security Notice' omit:cls='NetUIHWND' /&gt;&lt;ctrl name='Enable Macros' role='push button' /&gt;">
                       <ui:Target.TimeoutMS>
                         <InArgument x:TypeArguments="x:Int32" />
                       </ui:Target.TimeoutMS>
@@ -387,8 +386,8 @@
           </Catch>
         </TryCatch.Catches>
       </TryCatch>
-      <Delay DisplayName="Delay - 10 seconds" Duration="00:00:10" sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="Delay_3" />
-      <If sap:VirtualizedContainerService.HintSize="484,275" sap2010:WorkflowViewState.IdRef="If_33">
+      <Delay DisplayName="Delay - 10 seconds" Duration="00:00:10" sap:VirtualizedContainerService.HintSize="564,22" sap2010:WorkflowViewState.IdRef="Delay_3" />
+      <If sap:VirtualizedContainerService.HintSize="564,275" sap2010:WorkflowViewState.IdRef="If_33">
         <If.Condition>
           <InArgument x:TypeArguments="x:Boolean">
             <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_325">Directory.GetFiles(savedFilesPath).Count() &gt; 1</mca:CSharpValue>

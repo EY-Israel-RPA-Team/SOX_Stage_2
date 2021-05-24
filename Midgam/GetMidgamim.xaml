@@ -4,7 +4,7 @@
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>1151,2165</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1151,2296</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="64">
@@ -88,7 +88,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GetMidgamList" sap:VirtualizedContainerService.HintSize="868,2000" sap2010:WorkflowViewState.IdRef="Sequence_132">
+  <Sequence DisplayName="GetMidgamList" sap:VirtualizedContainerService.HintSize="868,2131" sap2010:WorkflowViewState.IdRef="Sequence_132">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="clientCompanyName" />
     </Sequence.Variables>
@@ -97,6 +97,13 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="826,91" sap2010:WorkflowViewState.IdRef="LogMessage_28" Level="Info">
+      <ui:LogMessage.Message>
+        <InArgument x:TypeArguments="x:Object">
+          <mca:CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_632">"Get Midgam Sequence"</mca:CSharpValue>
+        </InArgument>
+      </ui:LogMessage.Message>
+    </ui:LogMessage>
     <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="826,98" sap2010:WorkflowViewState.IdRef="MultipleAssign_40">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
@@ -131,8 +138,8 @@
               </ActivityAction.Argument>
               <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="754,1403" sap2010:WorkflowViewState.IdRef="Sequence_133">
                 <Sequence.Variables>
-                  <Variable x:TypeArguments="scg:List(x:String)" Name="clientsList" />
                   <Variable x:TypeArguments="sd:DataTable" Name="tmpDt" />
+                  <Variable x:TypeArguments="scg:List(x:String)" Name="clientList" />
                 </Sequence.Variables>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -142,7 +149,7 @@
                 <ui:ExcelGetWorkbookSheets DisplayName="Get Workbook Sheets" sap:VirtualizedContainerService.HintSize="712,22" sap2010:WorkflowViewState.IdRef="ExcelGetWorkbookSheets_3">
                   <ui:ExcelGetWorkbookSheets.Sheets>
                     <OutArgument x:TypeArguments="scg:List(x:String)">
-                      <mca:CSharpReference x:TypeArguments="scg:List(x:String)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_284">clientsList</mca:CSharpReference>
+                      <mca:CSharpReference x:TypeArguments="scg:List(x:String)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_290">clientList</mca:CSharpReference>
                     </OutArgument>
                   </ui:ExcelGetWorkbookSheets.Sheets>
                 </ui:ExcelGetWorkbookSheets>
@@ -267,7 +274,7 @@
                   </ui:ForEach.Body>
                   <ui:ForEach.Values>
                     <InArgument x:TypeArguments="sc:IEnumerable">
-                      <mca:CSharpValue x:TypeArguments="sc:IEnumerable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_600">clientsList</mca:CSharpValue>
+                      <mca:CSharpValue x:TypeArguments="sc:IEnumerable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_633">clientList</mca:CSharpValue>
                     </InArgument>
                   </ui:ForEach.Values>
                 </ui:ForEach>
