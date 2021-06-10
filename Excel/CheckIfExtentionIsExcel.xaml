@@ -4,7 +4,7 @@
     <x:Property Name="out_isExcel" Type="OutArgument(x:Boolean)" />
   </x:Members>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>1195,827</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1189,827</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -142,7 +142,7 @@
     <If sap:VirtualizedContainerService.HintSize="713,222" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Condition>
         <InArgument x:TypeArguments="x:Boolean">
-          <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_8" xml:space="preserve">tmp == ".xlsx" || 
+          <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_13" xml:space="preserve">tmp == ".xlsx" || 
 tmp == ".xlsm" || 
 tmp == ".xlsb" || 
 tmp == ".xltx" || 
@@ -152,7 +152,8 @@ tmp == ".xlt" ||
 tmp == ".xls" || 
 tmp == ".xlam" || 
 tmp == ".xla" || 
-tmp == ".xlw"</mca:CSharpValue>
+tmp == ".xlw" ||
+tmp == ".csv"</mca:CSharpValue>
         </InArgument>
       </If.Condition>
       <If.Then>

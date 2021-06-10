@@ -4,7 +4,7 @@
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>1151,2296</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1552,2410</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="64">
@@ -85,16 +85,16 @@
       <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
       <AssemblyReference>System.Threading.Tasks.Extensions</AssemblyReference>
       <AssemblyReference>System.Runtime.CompilerServices.Unsafe</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GetMidgamList" sap:VirtualizedContainerService.HintSize="868,2131" sap2010:WorkflowViewState.IdRef="Sequence_132">
+  <Sequence sap2010:Annotation.AnnotationText="This workflow will return a dictionary &lt;String, Int&gt;&#xA;key : is the full path of the midgam&#xA;value: the new lenght of the midgam.&#xA;This dictionary is containing all the midgamim" DisplayName="GetMidgamList" sap:VirtualizedContainerService.HintSize="868,2245" sap2010:WorkflowViewState.IdRef="Sequence_132">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="clientCompanyName" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="826,91" sap2010:WorkflowViewState.IdRef="LogMessage_28" Level="Info">
@@ -122,7 +122,7 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="826,1770" sap2010:WorkflowViewState.IdRef="TryCatch_13">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="826,1812" sap2010:WorkflowViewState.IdRef="TryCatch_13">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -130,13 +130,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <ui:ExcelApplicationScope Password="{x:Null}" sap2010:Annotation.AnnotationText="InnerDt.xlsx" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="788,1543" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_15" InstanceCachePeriod="3000" Visible="False">
+        <ui:ExcelApplicationScope Password="{x:Null}" sap2010:Annotation.AnnotationText="InnerDt.xlsx" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="788,1585" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_15" InstanceCachePeriod="3000" Visible="False">
           <ui:ExcelApplicationScope.Body>
             <ActivityAction x:TypeArguments="ui:WorkbookApplication">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="754,1403" sap2010:WorkflowViewState.IdRef="Sequence_133">
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="754,1445" sap2010:WorkflowViewState.IdRef="Sequence_133">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="sd:DataTable" Name="tmpDt" />
                   <Variable x:TypeArguments="scg:List(x:String)" Name="clientList" />
@@ -146,14 +146,14 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:ExcelGetWorkbookSheets DisplayName="Get Workbook Sheets" sap:VirtualizedContainerService.HintSize="712,22" sap2010:WorkflowViewState.IdRef="ExcelGetWorkbookSheets_3">
+                <ui:ExcelGetWorkbookSheets DisplayName="Get Workbook Sheets - clientList" sap:VirtualizedContainerService.HintSize="712,22" sap2010:WorkflowViewState.IdRef="ExcelGetWorkbookSheets_3">
                   <ui:ExcelGetWorkbookSheets.Sheets>
                     <OutArgument x:TypeArguments="scg:List(x:String)">
                       <mca:CSharpReference x:TypeArguments="scg:List(x:String)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_290">clientList</mca:CSharpReference>
                     </OutArgument>
                   </ui:ExcelGetWorkbookSheets.Sheets>
                 </ui:ExcelGetWorkbookSheets>
-                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="712,1249" sap2010:WorkflowViewState.IdRef="ForEach`1_51">
+                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="אחרי שלקחנו את הרשימת לשוניות מתוך inner.xlsx&#xD;&#xA;אנחנו עוברים על כולן בתנאי שאנחנו לא בלשונית הראשית" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="712,1291" sap2010:WorkflowViewState.IdRef="ForEach`1_51">
                   <ui:ForEach.Body>
                     <ActivityAction x:TypeArguments="x:String">
                       <ActivityAction.Argument>
@@ -277,6 +277,11 @@
                       <mca:CSharpValue x:TypeArguments="sc:IEnumerable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_633">clientList</mca:CSharpValue>
                     </InArgument>
                   </ui:ForEach.Values>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
                 </ui:ForEach>
               </Sequence>
             </ActivityAction>

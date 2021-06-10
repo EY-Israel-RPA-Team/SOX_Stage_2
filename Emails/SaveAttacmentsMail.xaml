@@ -6,7 +6,7 @@
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>1189,2640</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1189,2842</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="64">
@@ -113,7 +113,7 @@
       <x:Boolean x:Key="ShouldExpandAll">False</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="SaveAttacmentsMail" sap:VirtualizedContainerService.HintSize="693,2475" sap2010:WorkflowViewState.IdRef="Sequence_24">
+  <Sequence sap2010:Annotation.AnnotationText="תהליך זה מטפל במיילים שהתקבלו (מייל ראשון)&#xD;&#xA;במידה והתקבל מייל אנחנו נלחץ באווטלוק על הסקריפט שיצרנו&#xD;&#xA;" DisplayName="SaveAttacmentsMail" sap:VirtualizedContainerService.HintSize="693,2677" sap2010:WorkflowViewState.IdRef="Sequence_24">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:String[]" Name="EmailsFilesPathArr" />
       <Variable x:TypeArguments="x:String" Name="textFileContent" />
@@ -128,6 +128,7 @@
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="651,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info">
@@ -187,7 +188,7 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <Sequence DisplayName="Attachment handller" sap:VirtualizedContainerService.HintSize="651,1363" sap2010:WorkflowViewState.IdRef="Sequence_38">
+    <Sequence DisplayName="Attachment handller" sap:VirtualizedContainerService.HintSize="651,1420" sap2010:WorkflowViewState.IdRef="Sequence_38">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Boolean" Name="outlookSecurity" />
       </Sequence.Variables>
@@ -387,12 +388,17 @@
         </TryCatch.Catches>
       </TryCatch>
       <Delay DisplayName="Delay - 10 seconds" Duration="00:00:10" sap:VirtualizedContainerService.HintSize="564,22" sap2010:WorkflowViewState.IdRef="Delay_3" />
-      <If sap:VirtualizedContainerService.HintSize="564,275" sap2010:WorkflowViewState.IdRef="If_33">
+      <If sap2010:Annotation.AnnotationText="בודקים בתיקייה שבה אנחנו שומרים את הקבצים אם יש יותר מקובץ אחד&#xD;&#xA;(בגלל הקובץ txt)&#xD;&#xA;שהקריפסט מייצר אוטומטי" sap:VirtualizedContainerService.HintSize="564,332" sap2010:WorkflowViewState.IdRef="If_33">
         <If.Condition>
           <InArgument x:TypeArguments="x:Boolean">
             <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_325">Directory.GetFiles(savedFilesPath).Count() &gt; 1</mca:CSharpValue>
           </InArgument>
         </If.Condition>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
         <If.Then>
           <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="334,98" sap2010:WorkflowViewState.IdRef="MultipleAssign_8">
             <ui:MultipleAssign.AssignOperations>
@@ -413,14 +419,19 @@
         </If.Then>
       </If>
     </Sequence>
-    <ui:GetOutlookMailMessages Account="{x:Null}" Filter="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Get Outlook Mail Messages" GetAttachements="False" sap:VirtualizedContainerService.HintSize="651,22" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_1" MailFolder="Inbox" MarkAsRead="False" OnlyUnreadMessages="True" Top="1000">
+    <ui:GetOutlookMailMessages Account="{x:Null}" Filter="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="קוראים את כל המיילים שנשארו בתיבה (שבהם הסקריפט לא טיפל) " DisplayName="Get Outlook Mail Messages" GetAttachements="False" sap:VirtualizedContainerService.HintSize="651,79" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_1" MailFolder="Inbox" MarkAsRead="False" OnlyUnreadMessages="True" Top="1000">
       <ui:GetOutlookMailMessages.Messages>
         <OutArgument x:TypeArguments="scg:List(snm:MailMessage)">
           <mca:CSharpReference x:TypeArguments="scg:List(snm:MailMessage)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_51">messages</mca:CSharpReference>
         </OutArgument>
       </ui:GetOutlookMailMessages.Messages>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
     </ui:GetOutlookMailMessages>
-    <If sap:VirtualizedContainerService.HintSize="651,556" sap2010:WorkflowViewState.IdRef="If_20">
+    <If sap2010:Annotation.AnnotationText="אם נשארו לנו מיילים כאלו אנחנו רצים בלולאה על כל ההודעות" sap:VirtualizedContainerService.HintSize="651,587" sap2010:WorkflowViewState.IdRef="If_20">
       <If.Condition>
         <InArgument x:TypeArguments="x:Boolean">
           <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_259">messages.Count &gt; 0</mca:CSharpValue>
@@ -430,6 +441,7 @@
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
